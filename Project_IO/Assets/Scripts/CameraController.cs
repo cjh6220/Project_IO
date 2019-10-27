@@ -17,9 +17,11 @@ public class CameraController : MonoBehaviour
         /*float playerXPos = player.transform.position.x;
         float playerYPos = player.transform.position.y;
         this.transform.position = new Vector3(playerXPos, playerYPos, -10);*/
+        /*
         Vector3 currentPos = new Vector3(transform.position.x, transform.position.y, -10f);
         Vector3 targetPos = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
 
         transform.position = Vector3.MoveTowards(currentPos, targetPos, 0.1f);
+        */
     }
 }
