@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour
         gameover = GameObject.Find("GameOver");
         wingame = GameObject.Find("Victory");
 
-        //gameover.SetActive(false);
-        //wingame.SetActive(false);
+        gameover.SetActive(false);
+        wingame.SetActive(false);
                 
         InitPlayer();
     }
