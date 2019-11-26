@@ -45,5 +45,10 @@ public class DetectCollider : MonoBehaviour
                 IOGameManager.Instance.WinGame();
             }
         }
+        if (this.gameObject.transform.tag == "Foot" && collision.transform.tag == "Wall")
+        {
+            Debug.Log(this.gameObject.transform.tag + "가" + "벽에 닿음");
+            this.gameObject.GetComponentInParent<PlayerController>().ChangeFoot2();
+        }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Foot
   - Head
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ChangeFoot2()
+    public void ChangeFoot2()
     {
         if(change)
         {
