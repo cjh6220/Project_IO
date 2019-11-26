@@ -7,7 +7,9 @@ public class InGameScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.InitGame();
+        IOGameManager.Instance.InitGame();
+
+        //SetGame();
     }
 
     // Update is called once per frame
@@ -16,5 +18,12 @@ public class InGameScene : MonoBehaviour
         
     }
 
+    public void SetGame()
+    {
+        IOGameManager.Instance.gameover = GameObject.Find("GameOver").gameObject;
+        IOGameManager.Instance.wingame = GameObject.Find("Victory").gameObject;
 
+        IOGameManager.Instance.gameover.SetActive(false);
+        IOGameManager.Instance.wingame.SetActive(false);
+    }
 }

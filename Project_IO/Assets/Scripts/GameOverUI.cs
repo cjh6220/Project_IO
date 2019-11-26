@@ -20,7 +20,7 @@ public class GameOverUI : MonoBehaviour
     public void Restart()
     {
         Debug.Log("한판더");
-        GameManager.Instance.ResetGame();
+        IOGameManager.Instance.ResetGame();
     }
 
     public void Quit()

@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class IOGameManager : MonoSingleton<IOGameManager>
 {
     // Start is called before the first frame update
-    private static GameManager instance = null;
-    [SerializeField] private GameObject gameover;
-    [SerializeField] private GameObject wingame;
+    //private static IOGameManager instance = null;
+    public GameObject gameover;
+    public GameObject wingame;
     [SerializeField] public List<GameObject> playerList = new List<GameObject>();
 
-
-    public static GameManager Instance
+    /*
+    public static IOGameManager Instance
     {
         get 
         {
             if (instance ==null)
             {
-                instance = new GameManager();
+                instance = new IOGameManager();
             }
             return instance;
         }
     }
+    */
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         if(testbtn)
         {
             wingame.SetActive(true);
+            CheckList();
         }
     }
 
@@ -48,8 +50,9 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        gameover = GameObject.Find("GameOver");
-        wingame = GameObject.Find("Victory");
+        
+        gameover = GameObject.Find("GameOver").gameObject;
+        wingame = GameObject.Find("Victory").gameObject;
 
         gameover.SetActive(false);
         wingame.SetActive(false);
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour
         GameObject me = Instantiate(playerPrefab);//, new Vector3(5.64f, 0f, 0f), Quaternion.identity);
         me.transform.position = new Vector3(5.64f, 0f, -0.1f);
         me.name = "me";
-        //me.GetComponent<PlayerController>().SetCamera();
+        me.GetComponent<PlayerController>().SetCamera();
         playerList.Add(me);
 
         //CameraController.instance.InitCamera();
@@ -118,4 +121,9 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] public bool testbtn;
+
+    public void CheckList()
+    {
+        Debug.Log("플레이어 리스트 = " + playerList.Count);
+    }
 }

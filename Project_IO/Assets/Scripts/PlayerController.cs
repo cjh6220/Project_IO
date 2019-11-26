@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public GameObject switchPibot;
     public GameObject circle1;
     public GameObject circle2;
+    //private GameObject mainCamera;
+    private CameraController mainCamera;
 
     public bool change = false;
     public bool isTestObject = false;
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         circle1.GetComponent<DetectCollider>().Init(this.gameObject);
-        circle2.GetComponent<DetectCollider>().Init(this.gameObject);
+        circle2.GetComponent<DetectCollider>().Init(this.gameObject);        
     }
 
     // Update is called once per frame
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
             circle1.transform.tag = "Head";
             circle2.transform.tag = "Foot";
 
-            CameraController.instance.SetPlayer = circle1;
+            mainCamera.SetPlayer = circle1;
 
             change = false;
         }
@@ -96,7 +98,8 @@ public class PlayerController : MonoBehaviour
             circle2.transform.tag = "Head";
             circle1.transform.tag = "Foot";
 
-            CameraController.instance.SetPlayer = circle2;
+            mainCamera.SetPlayer = circle2;
+            
 
             change = true;
         }
@@ -104,6 +107,9 @@ public class PlayerController : MonoBehaviour
 
     public void SetCamera()
     {
-        CameraController.instance.SetPlayer = circle1;
+        mainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        mainCamera.SetPlayer = circle1;
+        mainCamera.InitCamera();
+        //CameraController.instance.SetPlayer = circle1;
     }
 }

@@ -30,19 +30,19 @@ public class DetectCollider : MonoBehaviour
 
             if (player.name == "me")
             {
-                GameManager.Instance.GameOver();
-                GameManager.Instance.DeletePlayerList(player);
+                IOGameManager.Instance.GameOver();
+                IOGameManager.Instance.DeletePlayerList(player);
                 Destroy(player);
             }
             else
             {
-                GameManager.Instance.DeletePlayerList(player);
+                IOGameManager.Instance.DeletePlayerList(player);
                 Destroy(player);
             }
 
-            if (GameManager.Instance.GetPlayerListNum() == 1)
+            if (IOGameManager.Instance.GetPlayerListNum() == 1)
             {
-                GameManager.Instance.WinGame();
+                IOGameManager.Instance.WinGame();
             }
         }
     }
