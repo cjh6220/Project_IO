@@ -27,7 +27,23 @@ public class DetectCollider : MonoBehaviour
         if (this.gameObject.transform.tag == "Head" && collision.transform.tag == "Foot")
         {
             Debug.Log(player.name + "가" + collision.transform.name + "에 닿음");
-            Destroy(player);
+
+            if (player.name == "me")
+            {
+                GameManager.Instance.GameOver();
+                GameManager.Instance.DeletePlayerList(player);
+                Destroy(player);
+            }
+            else
+            {
+                GameManager.Instance.DeletePlayerList(player);
+                Destroy(player);
+            }
+
+            if (GameManager.Instance.GetPlayerListNum() == 1)
+            {
+                GameManager.Instance.WinGame();
+            }
         }
     }
 }

@@ -81,7 +81,9 @@ public class PlayerController : MonoBehaviour
             circle1.transform.SetParent(this.transform);
 
             circle1.transform.tag = "Head";
-            circle2.transform.tag = "Foot";            
+            circle2.transform.tag = "Foot";
+
+            CameraController.instance.SetPlayer = circle1;
 
             change = false;
         }
@@ -94,8 +96,14 @@ public class PlayerController : MonoBehaviour
             circle2.transform.tag = "Head";
             circle1.transform.tag = "Foot";
 
+            CameraController.instance.SetPlayer = circle2;
+
             change = true;
         }
     }
 
+    public void SetCamera()
+    {
+        CameraController.instance.SetPlayer = circle1;
+    }
 }
